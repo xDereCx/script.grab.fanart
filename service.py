@@ -176,7 +176,9 @@ class GrabFanartService:
                     newMedia.logo = aMovie['art']['clearlogo']
 
                 if(newMedia.verify()):
+                    utils.log(newMedia.toString(),xbmc.LOGDEBUG)
                     self.xbmc_movies.append(newMedia)
+                    
             random.shuffle(self.xbmc_movies)
             
         utils.log("found " + str(len(self.xbmc_movies)) + " movies files",xbmc.LOGDEBUG)
@@ -203,6 +205,7 @@ class GrabFanartService:
                     newMedia.logo = aShow['art']['clearlogo']
 
                 if(newMedia.verify()):
+                    utils.log(newMedia.toString(),xbmc.LOGDEBUG)
                     self.xbmc_tv.append(newMedia)
 
             random.shuffle(self.xbmc_tv)                    
@@ -223,6 +226,7 @@ class GrabFanartService:
                 newMedia.plot = aArtist['description']
 
                 if(newMedia.verify()):
+                    utils.log(newMedia.toString(),xbmc.LOGDEBUG)
                     self.xbmc_music.append(newMedia)
 
             random.shuffle(self.xbmc_music)
@@ -253,7 +257,8 @@ class GrabFanartService:
                 if(aMovie['art'].has_key('clearlogo')):
                     newMedia.logo = aMovie['art']['clearlogo']
 
-                if(newMedia.verify()):    
+                if(newMedia.verify()):
+                    utils.log(newMedia.toString(),xbmc.LOGDEBUG)
                     self.xbmc_movies.append(newMedia)
                     
             random.shuffle(self.xbmc_movies)
@@ -287,6 +292,7 @@ class GrabFanartService:
                     newMedia.thumb = aShow['art']['thumb']
 
                 if(newMedia.verify()):
+                    utils.log(newMedia.toString(),xbmc.LOGDEBUG)
                     self.xbmc_tv.append(newMedia)
 
             random.shuffle(self.xbmc_tv)
@@ -306,6 +312,7 @@ class GrabFanartService:
                 newMedia.poster = aArtist['fanart']
                 
                 if(newMedia.verify()):
+                    utils.log(newMedia.toString(),xbmc.LOGDEBUG)
                     self.xbmc_music.append(newMedia)
 
             random.shuffle(self.xbmc_music)
@@ -346,5 +353,9 @@ class XbmcMedia:
             result = False
 
         return result
+   
+    def toString(self):
+        return json.dumps({"title":self.title,"fanart":self.fan_art})
+                              
     
 GrabFanartService().run()

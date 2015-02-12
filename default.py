@@ -6,7 +6,7 @@ if(len(sys.argv) > 1):
         #make sure it is a key/value pair
         if "=" in arg:
             splitString = arg.split('=')
-            utils.log(splitString[0])
+            utils.log(splitString[0] + ":" + splitString[1],xbmc.LOGDEBUG)
             utils.setSetting(splitString[0],splitString[1])
             
             
