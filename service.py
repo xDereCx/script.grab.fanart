@@ -352,6 +352,10 @@ class XbmcMedia:
         if(self.title == '' or self.fan_art == '' or self.poster == ''):
             result = False
 
+        #also cut the fan art string here
+        if(self.fan_art[-1] == '/'):
+            self.fan_art = self.fan_art[:-1]
+            
         return result
    
     def toString(self):
